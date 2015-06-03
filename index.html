@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<title>title</title>
+
+		<!-- 「viewport」はWebページに表示されるコンテンツの幅を閲覧している端末に応じて自動調整するための設定らしい -->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+		<!-- enchant.jsを定義している箇所。
+			   これを先に定義しているため、
+			   後の記述はenchant.jsの機能を利用することが出来るんやって。
+			   っていうか俺enchant.jsの配置方法間違ってる？
+			   フォルダごと置くんじゃなくて中身のenchant.jsのみ配置してみた。 -->
+		<script src="./js/lib/enchant.js"></script>
+
+		<script src="./js/main.js"></script>
+
+		<style>
+			/* styleの中ではこの形式でコメントを書かなければならない様子 */
+			/* ウィンドウとゲーム画面の隙間をなくす設定 */
+			body {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+
+	</head>
+
+	<body style="background: #000;">
+		<!-- ここにゲームが表示されるらしい -->
+	</body>
+
+</html>
