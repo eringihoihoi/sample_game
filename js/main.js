@@ -4,6 +4,18 @@ enchant();
 
 window.onload = function() {
 
+	// Spriteを拡張
+	Sprite.prototype.run = function(nowFrame) {
+
+		if (nowFrame % 4 == 0 || nowFrame % 4 == 2) {
+			this.frame = 0;
+		} else if (nowFrame % 4 == 1) {
+			this.frame = 1;
+		} else {
+			this.frame = 2;
+		}
+	};
+
 	// ゲームの本体を準備し、表示される領域を設定
 	var game = new Game(320, 320);
 
@@ -18,6 +30,19 @@ window.onload = function() {
 
 		// くまというスプライト(操作可能な画像)を準備すると同時に表示領域の大きさを指定
 		var kuma = new Sprite(32, 32);
+
+		// 生成したインスタンスに関数を後付けする場合
+//		kuma.run = function(nowFrame) {
+//
+//			if (nowFrame % 4 == 0 || nowFrame % 4 == 2) {
+//				this.frame = 0;
+//			} else if (nowFrame % 4 == 1) {
+//				this.frame = 1;
+//			} else {
+//				this.frame = 2;
+//			}
+//		};
+
 		// くまにあらかじめロードしていた画像を適用
 		kuma.image = game.assets['./img/chara1.png'];
 
@@ -54,13 +79,7 @@ window.onload = function() {
 
 			nowFrame += 1;
 
-			if (nowFrame % 4 == 0 || nowFrame % 4 == 2) {
-				kuma.frame = 0;
-			} else if (nowFrame % 4 == 1) {
-				kuma.frame = 1;
-			} else {
-				kuma.frame = 2;
-			}
+			kuma.run(nowFrame);
 		});
 
 		// シーンに「タッチイベント」を追加
@@ -82,3 +101,4 @@ window.onload = function() {
 	// ゲームをスタート
 	game.start();
 };
+
