@@ -25,6 +25,14 @@ window.onload = function() {
 		kuma.x = 100;
 		// くまの立て位置を設定
 		kuma.y = 120;
+
+//		// 幅を2倍に設定
+//		kuma.scaleX = 2;
+//		// 高さを0.5倍に設定
+//		kuma.scaleY = 0.5;
+//		// 幅、高さを相対的に変形させる
+//		kuma.scale(2, 3);
+
 		// ゲームのシーンにくまを表示させる
 		game.rootScene.addChild(kuma);
 		// ゲームの動作部分の背景色を設定
@@ -46,9 +54,11 @@ window.onload = function() {
 			if (e.x > kuma.x) {
 
 				speed = 1;
+				kuma.scaleX = 1;
 			} else {
 
 				speed = -1;
+				kuma.scaleX = -1;
 			}
 		});
 	}
