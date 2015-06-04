@@ -32,6 +32,10 @@ window.onload = function() {
 //		kuma.scaleY = 0.5;
 //		// 幅、高さを相対的に変形させる
 //		kuma.scale(2, 3);
+//		// 時計回りに90度回転させる
+//		kuma.rotation = 90;
+//		// こういう書き方も可能
+//		kuma.rotate(270);
 
 		// ゲームのシーンにくまを表示させる
 		game.rootScene.addChild(kuma);
@@ -40,11 +44,23 @@ window.onload = function() {
 
 		// くまのスピードを表す変数を定義
 		var speed = 1;
+		// くまを歩かせるためのフレーム
+		var nowFrame = 0;
 		// シーンに「毎フレーム実行イベント」を追加
 		game.rootScene.addEventListener(Event.ENTER_FRAME, function() {
 
 			// 毎フレーム、くまの座標を右に1pxずつずらす
 			kuma.x += speed;
+
+			nowFrame += 1;
+
+			if (nowFrame % 4 == 0 || nowFrame % 4 == 2) {
+				kuma.frame = 0;
+			} else if (nowFrame % 4 == 1) {
+				kuma.frame = 1;
+			} else {
+				kuma.frame = 2;
+			}
 		});
 
 		// シーンに「タッチイベント」を追加
